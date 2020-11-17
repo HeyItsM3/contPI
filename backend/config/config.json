@@ -6,8 +6,12 @@
     "dialect": "postgres",
     "port": 5432,
     "host": "localhost",
-    "database": "PostgreSQL 13",
+    "database": "ContentPI",
     "username": "postgres",
     "password": "12345"
+  },
+  "security": {
+    "secretKey": "C0nT3ntP1",
+    "expiresIn": "7d"
   }
 }

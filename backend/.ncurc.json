@@ -1,4 +1,4 @@
 {
-  "upgrade":true,
-  "reject":["sequelize"]
+  "upgrade": true,
+  "reject": ["sequelize"]
 }

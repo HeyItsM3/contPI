@@ -18,13 +18,15 @@
     "noEmit": true,
     "moduleResolution": "node",
     "isolatedModules": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "paths": {
+      "@app/*": ["app/*"],
+      "@config": ["config"],
+      "@lib/*": ["shared/lib/*"],
+      "@pages/*": ["pages/*"],
+      "@shared/*": ["shared/*"]
+    }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
-  "exclude": ["node_modules"],
-  "paths": {
-    "@app/*": ["app/*"],
-    "@pages/*": ["pages/*"],
-    "@shared/*": ["shared/*"]
-  }
+  "exclude": ["node_modules"]
 }

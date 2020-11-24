@@ -22,6 +22,9 @@
     "paths": {
       "@app/*": ["app/*"],
       "@config": ["config"],
+      "@contexts/*": ["contexts/*"],
+      "@graphql/*": ["graphql/*"],
+      "@interfaces": ["interfaces"],
       "@lib/*": ["shared/lib/*"],
       "@pages/*": ["pages/*"],
       "@shared/*": ["shared/*"]

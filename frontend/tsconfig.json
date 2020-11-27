@@ -26,6 +26,7 @@
       "@graphql/*": ["graphql/*"],
       "@interfaces": ["interfaces"],
       "@lib/*": ["shared/lib/*"],
+      "@layouts/*": ["shared/components/layouts/*"],
       "@pages/*": ["pages/*"],
       "@shared/*": ["shared/*"]
     }

@@ -10,14 +10,14 @@
     "lint": "eslint . --ext .js,.tsx,.ts",
     "test": "jest src"
   },
-  "jest": {
-    "transform": {
-      "^.+\\.tsx?$": "ts-jest"
-    }
-  },
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint"
+    }
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
     }
   },
   "author": "Carlos Santana",

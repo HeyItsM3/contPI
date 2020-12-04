@@ -1,6 +1,5 @@
 // Types
 import { App, User, Sequelize } from './types'
-import { Sequelize } from 'sequelize/types'
 
 // Sequelize
 export interface iDataTypes {

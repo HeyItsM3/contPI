@@ -1,146 +1,121 @@
-@import '~styles/_dependencies';
+import { styled } from '@styles/theme'
 
-.fields {
+export const StyledFields = styled.div`
   display: flex;
   flex-flow: column;
   margin-top: 0px;
   width: 75%;
-
-  @include minBreakpoint(1300px) {
+  @media (min-width: 1300px) {
     width: 88%;
   }
-
   .field {
     box-sizing: border-box;
     box-shadow: 0px 2px 2px -1px rgba(235, 235, 235, 1);
-    border: 1px solid $gallery;
+    border: 1px solid ${props => props.theme.colors.gray.gallery};
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 5px;
     position: relative;
-
     .actions {
       position: absolute;
       top: 6px;
       right: 10px;
-
       i {
         margin-right: 10px;
         font-size: 25px;
-        color: $gallery;
-
+        color: ${props => props.theme.colors.gray.gallery};
         &:hover {
           color: red;
-
           &:first-child {
-            color: $sunglow;
+            color: ${props => props.theme.colors.yellow.sunglow};
           }
         }
       }
     }
-
     &.sys {
-      background-color: $gallery;
+      background-color: ${props => props.theme.colors.gray.gallery};
     }
-
     &.hideSys {
       display: none;
     }
-
     .icon {
-      color: $white;
+      color: ${props => props.theme.color.white};
       display: inline-block;
       border-radius: 5px;
       margin-right: 20px;
-
       &.String {
-        background-color: $malachite;
+        background-color: ${props => props.theme.colors.green.malachite};
       }
-
       &.Text {
-        background-color: $hollywoodCerise;
+        background-color: ${props => props.theme.colors.pink.hollywoodCerise};
       }
-
       &.DateTime,
       &.Status {
-        background-color: $black;
+        background-color: ${props => props.theme.color.black};
       }
-
       &.Media {
-        background-color: $denim;
+        background-color: ${props => props.theme.colors.blue.denim};
       }
-
       &.Boolean {
-        background-color: $tuna;
+        background-color: ${props => props.theme.colors.gray.tuna};
       }
-
       &.Dropdown {
-        background-color: $dodgerBlue;
+        background-color: ${props => props.theme.colors.blue.dodgerBlue};
       }
-
       &.Reference {
-        background-color: $electricViolet;
+        background-color: ${props => props.theme.colors.purple.electricViolet};
       }
-
       i {
         padding: 16px;
         font-style: normal;
-
         &.id,
         &.integer,
         &.float {
-          background-color: $black;
-          color: $white;
+          background-color: ${props => props.theme.color.black};
+          color: ${props => props.theme.color.white};
           display: inline-block;
           border-radius: 5px;
           font-style: normal;
         }
-
         &.integer {
-          background-color: $oxfordBlue;
+          background-color: ${props => props.theme.colors.blue.oxfordBlue};
         }
-
         &.float {
-          background-color: $fuelYellow;
+          background-color: ${props => props.theme.colors.yellow.fuelYellow};
         }
       }
     }
-
     .name {
       display: inline-block;
       font-weight: 500;
       margin-top: -47px;
       vertical-align: text-top;
       line-height: 80px;
-
       .identifier {
         margin-left: 5px;
         font-weight: 100;
-        color: $frenchGray;
+        color: ${props => props.theme.colors.gray.frenchGray};
         font-size: 14px;
       }
-
       .information {
         display: block;
         margin-top: -24px;
         line-height: 10px;
-
         .tag {
-          background-color: $alabaster;
+          background-color: ${props => props.theme.colors.gray.alabaster};
           border-radius: 5px;
-          color: $tuna;
+          color: ${props => props.theme.colors.gray.tuna};
           font-size: 12px;
           margin-right: 5px;
           padding: 5px;
           text-align: center;
           width: 40px;
-
           &.system {
-            background-color: $logan;
-            color: $gallery;
+            background-color: ${props => props.theme.colors.purple.logan};
+            color: ${props => props.theme.colors.gray.gallery};
           }
         }
       }
     }
   }
-}
+`

@@ -1,6 +1,6 @@
-@import '~styles/_dependencies';
+import { styled } from '@styles/theme'
 
-.content {
+export const StyledContent = styled.div`
   width: 100%;
   height: 100%;
   min-height: 100vh;
@@ -9,19 +9,17 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-
   .container {
-    background-color: $white;
+    background-color: ${props => props.theme.color.white};
     border-radius: 0.5rem;
     display: flex;
     justify-content: space-between;
     margin: 20px;
     width: 100%;
-
     .wrapper {
       padding: 10px;
       min-height: 800px;
       width: 100%;
     }
   }
-}
+`

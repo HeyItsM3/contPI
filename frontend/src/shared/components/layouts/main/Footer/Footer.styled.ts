@@ -10,14 +10,14 @@ export const StyledFooter = styled.footer`
     display: flex;
     align-items: center;
     justify-content: center;
-    color: $emperor;
+    color: ${props => props.theme.colors.gray.emperor};
     font-size: 14px;
     justify-content: space-between;
     ${props => props.theme.mixins.breakpoint.sm`
       flex-direction: column-reverse;
     `};
     .copyright {
-      color: $black;
+      color: ${props => props.theme.color.black};
       margin-bottom: 10px;
     }
     .rightOptions {

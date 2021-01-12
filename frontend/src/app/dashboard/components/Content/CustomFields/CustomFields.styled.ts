@@ -10,7 +10,7 @@ export const StyledCustomFields = styled.div`
   .id {
     display: inline-block;
     background-color: ${props => props.theme.colors.gray.gallery};
-    color: $gray;
+    color: ${props => props.theme.color.gray};
     font-size: 11px;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -37,7 +37,7 @@ export const StyledCustomFields = styled.div`
     .goBack {
       display: flex;
       align-items: center;
-      color: $tuna;
+      color: ${props => props.theme.colors.gray.tuna};
       font-size: 24px;
       margin-bottom: 40px;
       a {
@@ -73,7 +73,7 @@ export const StyledCustomFields = styled.div`
         .tag {
           background-color: ${props => props.theme.colors.gray.alabaster};
           border-radius: 5px;
-          color: $tuna;
+          color: ${props => props.theme.colors.gray.tuna};
           font-size: 12px;
           margin-right: 5px;
           padding: 5px;
@@ -81,7 +81,7 @@ export const StyledCustomFields = styled.div`
           width: 40px;
         }
         .red {
-          color: $red;
+          color: ${props => props.theme.color.red};
           background-color: ${props => props.theme.colors.pink.fairPink};
         }
       }

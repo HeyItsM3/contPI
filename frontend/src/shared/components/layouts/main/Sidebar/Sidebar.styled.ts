@@ -113,7 +113,7 @@ export const StyledSidebar = styled.aside`
             justify-content: left;
             &:first-child {
               a {
-                color: $denim;
+                color: ${props => props.theme.colors.blue.denim};
                 font-weight: 600;
                 &:hover {
                   &:after {
@@ -125,14 +125,14 @@ export const StyledSidebar = styled.aside`
             a {
               padding: 10px 30px;
               text-decoration: none;
-              color: $emperor;
+              color: ${props => props.theme.colors.gray.emperor};
               font-size: 0.835rem;
               font-weight: 400;
               line-height: 1.5;
               position: relative;
               width: 100%;
               &:hover {
-                color: $denim;
+                color: ${props => props.theme.colors.blue.denim};
                 &:after {
                   content: '';
                   position: absolute;

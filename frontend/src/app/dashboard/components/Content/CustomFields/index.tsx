@@ -1,104 +1,269 @@
-import { styled } from '@styles/theme'
+// Dependencies
+import React, { FC, ReactElement, useState, memo } from 'react'
+import { Badge, Icon, Input, TextArea, Select, File, EntryBlock } from 'fogg-ui'
+import {
+  cx,
+  slugFn,
+  bytesToSize,
+  getFileInfo,
+  getImageData,
+  getRandomCode,
+  getReferenceTitle
+} from 'fogg-utils'
 
-export const StyledSystemFields = styled.div`
-  background-color: ${props => props.theme.colors.gray.whisper};
-  border-bottom: 1px solid ${props => props.theme.colors.gray.gallery};
-  border-left: 1px solid ${props => props.theme.colors.gray.gallery};
-  height: 100vh;
-  margin-top: -20px;
-  padding-top: 10px;
-  position: relative;
-  width: 420px;
-  ${props => props.theme.mixins.breakpoint.md`
-    width: 350px;
-    margin-left: -100px;
-  `};
-  ${props => props.theme.mixins.breakpoint.sm`
-    width: 300px;
-    margin-left: -160px;
-  `};
-  .wrapper {
-    margin: 0 auto;
-    width: 90%;
-    .block {
-      color: $doveGray;
-      font-size: 12px;
-      font-weight: 600;
-      border-bottom: 1px solid ${props => props.theme.colors.gray.gallery};
-      text-transform: uppercase;
-      padding-bottom: 5px;
-      margin-bottom: 20px;
+// Configuration
+import config from '@config'
+
+// Constants
+import { CONTENT_LINK } from '@constants/links'
+
+// Shared components
+import Link from '@ui/Link'
+import ReferenceModal from '@modals/ReferenceModal'
+
+// Styles
+import { StyledCustomFields } from './CustomFields.styled'
+
+interface iProps {
+  action: string
+  active: string
+  customFields: any
+  getModel: any
+  handleActive: any
+  onChange: any
+  required: any
+  router: any
+  values: any
+  setValues: any
+  enumerations: any[]
+  entries: any[]
+  referenceEntries: any
+  selectedEntries: any
+  setCurrentEntry: any
+  handleReferenceModal: any
+  isReferenceModalOpen: any
+}
+
+const CustomFields: FC<iProps> = ({
+  active,
+  action,
+  customFields,
+  getModel,
+  handleActive,
+  onChange,
+  required,
+  router,
+  values,
+  setValues,
+  enumerations,
+  entries,
+  referenceEntries,
+  selectedEntries,
+  setCurrentEntry,
+  handleReferenceModal,
+  isReferenceModalOpen
+}): ReactElement => {
+  const [selectedFile, setSelectedFile] = useState({})
+
+  // Methods
+  const handleSelectedFile = async (e: any) => {
+    if (e.target.files[0]) {
+      const file = e.target.files[0]
+      const fileSize = bytesToSize(file.size, config.files.maxFileSize)
+      const { fileName, extension } = getFileInfo(file.name)
+      const identifier = slugFn(fileName)
+      const code = getRandomCode(4)
+      const isDocument = config.files.types.documents.includes(extension)
+      const isImage = config.files.types.images.includes(extension)
+      const isVideo = config.files.types.videos.includes(extension)
+      let information = ''
+      let url = config.files.path
+
+      if (isDocument) {
+        url += '/documents'
+      }
+
+      if (isImage) {
+        const img: any = await getImageData(file)
+        information = `${img.width}x${img.height}px`
+        url += '/images'
+      }
+
+      if (isVideo) {
+        url += '/videos'
+      }
+
+      setValues((preValues: any) => ({
+        ...preValues,
+        file,
+        fileName: `${fileName}.${extension}`,
+        fileUrl: `${url}/${identifier}_${code}.${extension}`,
+        size: fileSize.size,
+        information
+      }))
+
+      setSelectedFile(file)
     }
-    .row {
-      margin-bottom: 20px;
-      .systemField {
-        display: flex;
-        justify-content: space-between;
-        color: $doveGray;
-        font-size: 13px;
-        margin-bottom: 20px;
-        .label,
-        .id,
-        .createdAt,
-        .updatedAt {
-          display: inline-block;
-          background-color: ${props => props.theme.colors.gray.gallery};
-          border-radius: 3px;
-          color: $gray;
-          font-size: 11px;
-          padding: 5px 6px;
-          margin-top: -5px;
-          width: 66px;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          text-align: center;
-        }
-        .id {
-          width: 237px;
-          ${props => props.theme.mixins.breakpoint.sm`
-            width: 100px;
-          `};
-        }
-        .status {
-          color: ${props => props.theme.colors.yellow.mySin};
-          text-transform: uppercase;
-          &.published {
-            color: ${props => props.theme.colors.green.mountainMeadow};
-          }
-        }
-        .createdAt,
-        .updatedAt {
-          width: 160px;
-          ${props => props.theme.mixins.breakpoint.sm`
-            width: 100px;
-          `};
-        }
-        .empty {
-          display: none;
-        }
+  }
+
+  const renderReference = (field: any) => {
+    const modelId = field.defaultValue
+    const modelEntries = entries.find((entry: any) => entry.modelId === modelId)
+
+    if (modelEntries && modelEntries.entries) {
+      const { modelName } = modelEntries
+      const currentEntries = selectedEntries[modelName]
+
+      return (
+        <div className="entries">
+          {currentEntries &&
+            currentEntries.map((entry: any) => (
+              <EntryBlock
+                key={entry.id}
+                modelName={entry.modelName}
+                title={getReferenceTitle(entry)}
+                status={entry.status}
+              />
+            ))}
+
+          <a className="reference" onClick={() => handleReferenceModal(modelEntries)}>
+            <Icon type="fas fa-link" /> Link existing {modelName}
+          </a>
+        </div>
+      )
+    }
+  }
+
+  const renderFileInput = (field: any) => {
+    return (
+      <File
+        name={field.identifier}
+        selectedFile={selectedFile}
+        label="Choose a file"
+        onChange={handleSelectedFile}
+        maxFileSize={config.files.maxFileSize}
+        theme="success"
+        allowedExtensions={config.files.allowedExtensions}
+      />
+    )
+  }
+
+  const renderDropdown = (field: any) => {
+    const enumId = field.defaultValue
+    const enumeration = enumerations.find((enu: any) => enu.id === enumId)
+    const options: any = JSON.parse(enumeration.values)
+
+    if (action === 'edit') {
+      const currentValue = values[field.identifier].split(':')[1]
+      const optionIndex = options.findIndex((option: any) => option.value === currentValue)
+
+      if (optionIndex > -1) {
+        options[optionIndex].selected = true
       }
     }
+
+    return (
+      <div className={field.type.toLowerCase()}>
+        <Select
+          name={enumeration.identifier}
+          label={enumeration.enumerationName}
+          onClick={({ option, value }: { option: string; value: string }): void => {
+            if (option && value) {
+              setValues((preValues: any) => ({
+                ...preValues,
+                [field.identifier]: `${option}:${value}`
+              }))
+            }
+          }}
+          options={options}
+        />
+      </div>
+    )
   }
-  .alert {
-    width: 100%;
-    transition-property: right, left;
-    transition-duration: 1s;
-    -webkit-transition-property: right, left;
-    -webkit-transition-duration: 1s;
-    position: absolute;
-    right: calc(100% - 900px);
-    bottom: 150px;
-    &.show {
-      ${props => props.theme.mixins.breakpoint.lg`
-        right: calc(100% - 350px);
-      `};
-      ${props => props.theme.mixins.breakpoint.md`
-        right: calc(100% - 300px);
-      `};
-      ${props => props.theme.mixins.breakpoint.sm`
-        right: calc(100% - 270px);
-      `};
-    }
-  }
-`
+
+  return (
+    <>
+      <ReferenceModal
+        label="Inserting existing entry"
+        isOpen={isReferenceModalOpen}
+        onClose={() => handleReferenceModal(null)}
+        options={{
+          position: 'top',
+          width: '650px',
+          data: {
+            referenceEntries,
+            setCurrentEntry
+          }
+        }}
+      />
+
+      <StyledCustomFields>
+        <div className="fields">
+          <div className="goBack">
+            <Link href={CONTENT_LINK(router).as} title={`Go back to ${getModel.modelName}`}>
+              <Icon type="fas fa-chevron-left" />
+            </Link>
+            &nbsp;&nbsp;&nbsp;
+            <Badge className="badge">{getModel.modelName}</Badge>
+            <div className="entryTitle">{values.title || <>New {getModel.modelName}</>}</div>
+          </div>
+
+          {customFields.map((field: any) => (
+            <div
+              key={field.id}
+              className={cx(
+                'field',
+                active === field.identifier ? 'active' : '',
+                required[field.identifier] ? 'red' : ''
+              )}
+              onClick={(): void => handleActive(field.identifier)}
+            >
+              <div>
+                <label>
+                  {field.fieldName}{' '}
+                  {field.isRequired && (
+                    <span className={cx('tag', required[field.identifier] ? 'red' : '')}>
+                      Required
+                    </span>
+                  )}
+                </label>
+              </div>
+
+              {field.type === 'String' && (
+                <div className={field.type.toLowerCase()}>
+                  <Input
+                    type="text"
+                    hasError={required[field.identifier]}
+                    name={field.identifier}
+                    onChange={onChange}
+                    disabled={field.identifier === 'fileUrl'}
+                    placeholder={field.fieldName}
+                    value={values[field.identifier]}
+                  />
+                </div>
+              )}
+
+              {field.type === 'Text' && (
+                <div className={field.type.toLowerCase()}>
+                  <TextArea
+                    name={field.identifier}
+                    hasError={required[field.identifier]}
+                    placeholder={field.fieldName}
+                    onChange={onChange}
+                    value={values[field.identifier]}
+                  />
+                </div>
+              )}
+
+              {field.type === 'Dropdown' && renderDropdown(field)}
+              {field.type === 'File' && renderFileInput(field)}
+              {field.type === 'Reference' && renderReference(field)}
+            </div>
+          ))}
+        </div>
+      </StyledCustomFields>
+    </>
+  )
+}
+
+export default memo(CustomFields)

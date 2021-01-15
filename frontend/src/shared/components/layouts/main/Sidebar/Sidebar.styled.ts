@@ -1,9 +1,9 @@
-import { styled } from '@styles/theme'
+import { styled, theme } from '@styles/theme'
 
 export const StyledSidebar = styled.aside`
-  background: ${props => props.theme.color.white};
+  background: ${theme.color.white};
   width: auto;
-  background-color: ${props => props.theme.color.white};
+  background-color: ${theme.color.white};
   display: flex;
   flex-direction: row;
   box-shadow: 0 3px 10px rgba(62, 85, 120, 0.07);
@@ -16,7 +16,7 @@ export const StyledSidebar = styled.aside`
       rgba(9, 9, 121, 1) 35%,
       rgba(0, 212, 255, 1) 100%
     );
-    color: ${props => props.theme.color.white};
+    color: ${theme.color.white};
     .isoType {
       width: 100%;
       display: flex;
@@ -51,7 +51,7 @@ export const StyledSidebar = styled.aside`
           cursor: pointer;
         }
         a {
-          color: ${props => props.theme.color.white};
+          color: ${theme.color.white};
           text-decoration: none;
           font-size: 16px;
           text-align: center;
@@ -85,11 +85,11 @@ export const StyledSidebar = styled.aside`
         justify-content: flex-end;
         align-items: center;
         span {
-          background-color: ${props => props.theme.colors.gray.wildSand};
+          background-color: ${theme.colors.gray.wildSand};
           border-radius: 0.5rem;
           margin-right: 1rem;
           i {
-            color: ${props => props.theme.colors.gray.emperor};
+            color: ${theme.colors.gray.emperor};
             font-size: 14px;
             width: 45px;
             height: 40px;
@@ -113,7 +113,7 @@ export const StyledSidebar = styled.aside`
             justify-content: left;
             &:first-child {
               a {
-                color: ${props => props.theme.colors.blue.denim};
+                color: ${theme.colors.blue.denim};
                 font-weight: 600;
                 &:hover {
                   &:after {
@@ -125,14 +125,14 @@ export const StyledSidebar = styled.aside`
             a {
               padding: 10px 30px;
               text-decoration: none;
-              color: ${props => props.theme.colors.gray.emperor};
+              color: ${theme.colors.gray.emperor};
               font-size: 0.835rem;
               font-weight: 400;
               line-height: 1.5;
               position: relative;
               width: 100%;
               &:hover {
-                color: ${props => props.theme.colors.blue.denim};
+                color: ${theme.colors.blue.denim};
                 &:after {
                   content: '';
                   position: absolute;
@@ -147,7 +147,7 @@ export const StyledSidebar = styled.aside`
                   top: 0;
                   bottom: 0;
                   right: 0;
-                  background-color: ${props => props.theme.colors.blue.denim};
+                  background-color: ${theme.colors.blue.denim};
                 }
               }
             }
@@ -164,7 +164,7 @@ export const StyledSidebar = styled.aside`
     margin-bottom: 10px;
     span {
       display: inline-block;
-      background-color: ${props => props.theme.colors.blue.pictonBlue};
+      background-color: ${theme.colors.blue.pictonBlue};
       width: 40px;
       height: 40px;
       text-align: center;

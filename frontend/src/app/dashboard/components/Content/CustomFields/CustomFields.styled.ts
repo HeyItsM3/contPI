@@ -1,4 +1,4 @@
-import { styled } from '@styles/theme'
+import { styled, theme, device } from '@styles/theme'
 
 export const StyledCustomFields = styled.div`
   display: flex;
@@ -9,8 +9,8 @@ export const StyledCustomFields = styled.div`
   width: 100%;
   .id {
     display: inline-block;
-    background-color: ${props => props.theme.colors.gray.gallery};
-    color: ${props => props.theme.color.gray};
+    background-color: ${theme.colors.gray.gallery};
+    color: ${theme.color.gray};
     font-size: 11px;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -20,16 +20,16 @@ export const StyledCustomFields = styled.div`
   .fields {
     font-size: 13px;
     line-height: 24px;
-    color: ${props => props.theme.colors.gray.regentGray};
+    color: ${theme.colors.gray.regentGray};
     width: 100%;
     max-width: 800px;
     margin-top: 20px;
-    ${props => props.theme.mixins.breakpoint.md`
+    @media ${device.laptop} {
       max-width: 600px;
-    `};
-    ${props => props.theme.mixins.breakpoint.sm`
+    }
+    @media ${device.tablet} {
       max-width: 420px;
-    `};
+    }
     .badge {
       padding: 6px;
       margin-right: 10px;
@@ -37,43 +37,43 @@ export const StyledCustomFields = styled.div`
     .goBack {
       display: flex;
       align-items: center;
-      color: ${props => props.theme.colors.gray.tuna};
+      color: ${theme.colors.gray.tuna};
       font-size: 24px;
       margin-bottom: 40px;
       a {
-        color: ${props => props.theme.colors.gray.tuna};
+        color: ${theme.colors.gray.tuna};
       }
     }
     .entryTitle {
       word-wrap: break-word;
       width: 550px;
-      ${props => props.theme.mixins.breakpoint.sm`
+      @media ${device.tablet} {
         width: 300px;
-      `};
+      }
     }
     .field {
-      border-left: 3px solid ${props => props.theme.colors.gray.gallery};
+      border-left: 3px solid ${theme.colors.gray.gallery};
       padding-left: 10px;
       margin-top: 10px;
       .entries {
         margin-top: 5px;
         .reference {
-          color: ${props => props.theme.colors.purple.electricViolet};
+          color: ${theme.colors.purple.electricViolet};
           cursor: pointer;
         }
       }
       &.active {
-        border-left: 3px solid ${props => props.theme.colors.blue.pictonBlue};
+        border-left: 3px solid ${theme.colors.blue.pictonBlue};
       }
       &.red {
-        border-left: 3px solid ${props => props.theme.color.red};
+        border-left: 3px solid ${theme.color.red};
       }
       label {
         width: 100%;
         .tag {
-          background-color: ${props => props.theme.colors.gray.alabaster};
+          background-color: ${theme.colors.gray.alabaster};
           border-radius: 5px;
-          color: ${props => props.theme.colors.gray.tuna};
+          color: ${theme.colors.gray.tuna};
           font-size: 12px;
           margin-right: 5px;
           padding: 5px;
@@ -81,8 +81,8 @@ export const StyledCustomFields = styled.div`
           width: 40px;
         }
         .red {
-          color: ${props => props.theme.color.red};
-          background-color: ${props => props.theme.colors.pink.fairPink};
+          color: ${theme.color.red};
+          background-color: ${theme.colors.pink.fairPink};
         }
       }
       .text {

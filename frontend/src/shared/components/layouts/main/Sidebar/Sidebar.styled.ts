@@ -1,4 +1,4 @@
-import { styled, theme } from '@styles/theme'
+import { styled, theme, add, isRtl } from '@styles/theme'
 
 export const StyledSidebar = styled.aside`
   background: ${theme.color.white};
@@ -17,6 +17,7 @@ export const StyledSidebar = styled.aside`
       rgba(0, 212, 255, 1) 100%
     );
     color: ${theme.color.white};
+    height: 101%;
     .isoType {
       width: 100%;
       display: flex;
@@ -73,17 +74,30 @@ export const StyledSidebar = styled.aside`
     &.secondOptions {
       width: 225px;
       display: block;
+      position: absolute;
+      z-index: 9999;
+      background: white;
+      height: 100%;
+      &.ltr {
+        left: 75px;
+        border-right: 3px solid ${theme.colors.gray.almostWhite};
+      }
+      &.rtl {
+        right: 75px;
+        border-left: 3px solid ${theme.colors.gray.almostWhite};
+      }
       .logoContainer {
         height: 70px;
         width: 100%;
       }
       .close {
         height: 60px;
-        width: 100%;
+        width: 215px;
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
         align-items: center;
+        margin-left: 10px;
         span {
           background-color: ${theme.colors.gray.wildSand};
           border-radius: 0.5rem;
@@ -161,6 +175,7 @@ export const StyledSidebar = styled.aside`
     position: absolute;
     bottom: 0;
     left: 19px;
+    ${add('right: 15px;').if(isRtl)}
     margin-bottom: 10px;
     span {
       display: inline-block;

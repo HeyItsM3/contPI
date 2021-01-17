@@ -1,4 +1,4 @@
-import { styled, theme } from '@styles/theme'
+import { styled, theme, device } from '@styles/theme'
 
 export const StyledModal = styled.div`
   p {
@@ -53,6 +53,13 @@ export const StyledModal = styled.div`
     display: flex;
     justify-content: flex-end;
     text-transform: capitalize;
+    width: 98.9%;
+    @media ${device.mobileXl} {
+      width: 96%;
+    }
+    @media ${device.mobile} {
+      width: 98%;
+    }
     &.center {
       justify-content: space-between;
     }

@@ -26,7 +26,7 @@ export const StyledFields = styled.div`
         color: ${theme.colors.gray.gallery};
         &:hover {
           color: red;
-          &:first-child {
+          &:first-of-type {
             color: ${theme.colors.yellow.sunglow};
           }
         }

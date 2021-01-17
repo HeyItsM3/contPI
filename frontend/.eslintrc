@@ -66,6 +66,7 @@
     "react/jsx-props-no-spreading": "off",
     "jsx-a11y/label-has-associated-control": "off",
     "react/jsx-one-expression-per-line": "off",
-    "no-prototype-builtins": "off"
+    "no-prototype-builtins": "off",
+    "no-nested-ternary": "off"
   }
 }

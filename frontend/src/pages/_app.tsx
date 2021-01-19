@@ -7,7 +7,7 @@ import fetch from 'isomorphic-fetch'
 import { isBrowser } from 'fogg-utils'
 
 // Contexts
-import ContentProvider from '@contexts/content'
+import ContentProvider from '@contexts/i18n'
 
 // Configuration
 import config from '@config'

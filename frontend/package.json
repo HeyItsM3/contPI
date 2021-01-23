@@ -63,6 +63,8 @@
   },
   "dependencies": {
     "@apollo/client": "^3.2.5",
+    "@contentpi/ui": "^2.0.1",
+    "@contentpi/utils": "^1.1.1",
     "@emotion/core": "^11.0.0",
     "@emotion/styled": "^11.0.0",
     "body-parser": "^1.19.0",
@@ -72,8 +74,6 @@
     "dotenv-webpack": "^2.0.0",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
-    "fogg-ui": "^3.3.1",
-    "fogg-utils": "2.7.5",
     "graphql": "^15.4.0",
     "isomorphic-fetch": "^3.0.0",
     "jsonwebtoken": "^8.5.1",

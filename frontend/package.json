@@ -49,7 +49,7 @@
     "cross-env": "^7.0.3",
     "eslint": "7.20.0",
     "eslint-config-airbnb": "^18.2.1",
-    "eslint-config-prettier": "^7.2.0",
+    "eslint-config-prettier": "^8.0.0",
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-jsx-a11y": "6.4.1",
     "eslint-plugin-prettier": "^3.3.1",
@@ -65,7 +65,7 @@
   "dependencies": {
     "@apollo/client": "^3.3.11",
     "@contentpi/ui": "^2.0.1",
-    "@contentpi/utils": "^1.1.1",
+    "@contentpi/utils": "^1.1.7",
     "@emotion/core": "^11.0.0",
     "@emotion/styled": "^11.1.5",
     "body-parser": "^1.19.0",

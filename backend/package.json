@@ -44,13 +44,13 @@
     "prettier": "^2.2.1",
     "sequelize-mock": "0.10.2",
     "ts-jest": "^26.5.2",
-    "ts-node-dev": "^1.1.1",
+    "ts-node-dev": "^1.1.6",
     "tslint": "6.1.2",
     "typescript": "4.2.2"
   },
   "dependencies": {
     "@contentpi/utils": "^1.1.7",
-    "@graphql-tools/load-files": "^6.2.5",
+    "@graphql-tools/load-files": "^6.2.7",
     "@graphql-tools/merge": "^6.2.10",
     "apollo-server": "2.21.0",
     "dotenv": "^8.2.0",
@@ -61,7 +61,7 @@
     "mysql2": "^2.2.5",
     "pg": "8.5.1",
     "pg-hstore": "2.3.3",
-    "pm2": "^4.5.4",
+    "pm2": "^4.5.5",
     "sequelize": "5.22.3",
     "sequelize-typescript": "2.1.0",
     "ts-node": "9.1.1"

@@ -50,7 +50,7 @@
   },
   "dependencies": {
     "@contentpi/utils": "^1.1.7",
-    "@graphql-tools/load-files": "^6.3.1",
+    "@graphql-tools/load-files": "^6.3.2",
     "@graphql-tools/merge": "^6.2.10",
     "apollo-server": "2.22.2",
     "dotenv": "^8.2.0",

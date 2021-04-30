@@ -1,0 +1,38 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/backend"
+  schedule:
+    interval: monthly
+    time: "09:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: "@typescript-eslint/parser"
+    versions:
+    - 4.18.0
+    - 4.21.0
+  - dependency-name: eslint
+    versions:
+    - 7.23.0
+  - dependency-name: "@types/node"
+    versions:
+    - 14.14.35
+  - dependency-name: sequelize
+    versions:
+    - 6.5.1
+- package-ecosystem: npm
+  directory: "/frontend"
+  schedule:
+    interval: monthly
+    time: "09:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: eslint
+    versions:
+    - 7.23.0
+  - dependency-name: "@typescript-eslint/eslint-plugin"
+    versions:
+    - 4.18.0
+  - dependency-name: dotenv-webpack
+    versions:
+    - 7.0.1

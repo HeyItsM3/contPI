@@ -52,7 +52,7 @@
     "@contentpi/utils": "^1.1.7",
     "@graphql-tools/load-files": "^6.3.1",
     "@graphql-tools/merge": "^6.2.10",
-    "apollo-server": "2.22.2",
+    "apollo-server": "2.23.0",
     "dotenv": "^8.2.0",
     "express": "4.17.1",
     "graphql": "^15.5.0",

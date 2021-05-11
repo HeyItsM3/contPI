@@ -41,7 +41,7 @@
     "eslint-plugin-react": "^7.22.0",
     "husky": "^6.0.0",
     "jest": "^26.6.3",
-    "prettier": "^2.2.1",
+    "prettier": "^2.3.0",
     "sequelize-mock": "0.10.2",
     "ts-jest": "^26.5.6",
     "ts-node-dev": "^1.1.6",
@@ -51,7 +51,7 @@
   "dependencies": {
     "@contentpi/utils": "^1.1.7",
     "@graphql-tools/load-files": "^6.3.1",
-    "@graphql-tools/merge": "^6.2.10",
+    "@graphql-tools/merge": "^6.2.14",
     "apollo-server": "2.22.2",
     "dotenv": "^8.2.0",
     "express": "4.17.1",

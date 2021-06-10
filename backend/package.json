@@ -25,7 +25,7 @@
   "author": "Carlos Santana",
   "license": "ISC",
   "devDependencies": {
-    "@types/express": "4.17.11",
+    "@types/express": "4.17.12",
     "@types/jest": "^26.0.23",
     "@types/jsonwebtoken": "8.5.1",
     "@types/node": "15.12.0",

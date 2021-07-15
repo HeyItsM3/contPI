@@ -41,7 +41,7 @@
     "eslint-plugin-react": "^7.24.0",
     "husky": "^7.0.1",
     "jest": "^26.6.3",
-    "prettier": "^2.3.0",
+    "prettier": "^2.3.2",
     "sequelize-mock": "0.10.2",
     "ts-jest": "^26.5.6",
     "ts-node-dev": "^1.1.6",
